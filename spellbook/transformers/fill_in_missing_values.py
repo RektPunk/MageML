@@ -1,4 +1,4 @@
-from pandas import DataFrame
+import pandas as pd
 import math
 
 if "transformer" not in globals():
@@ -7,20 +7,30 @@ if "test" not in globals():
     from mage_ai.data_preparation.decorators import test
 
 
-def select_number_columns(df: DataFrame) -> DataFrame:
-    return df[["Age", "Fare", "Parch", "Pclass", "SibSp", "Survived"]]
+X_COLS = [
+    "Age",
+    "Fare",
+    "Parch",
+    "Pclass",
+    "SibSp",
+    "Survived",
+]
 
 
-def fill_missing_values_with_median(df: DataFrame) -> DataFrame:
+def select_number_columns(df: pd.DataFrame) -> pd.DataFrame:
+    return df[X_COLS]
+
+
+def fill_missing_values_with_median(df: pd.DataFrame) -> pd.DataFrame:
     for col in df.columns:
         values = sorted(df[col].dropna().tolist())
         median_age = values[math.floor(len(values) / 2)]
-        df[[col]] = df[[col]].fillna(median_age)
+        df = df.assign(**{col: df[[col]].fillna(median_age)})
     return df
 
 
 @transformer
-def transform_df(df: DataFrame, *args, **kwargs) -> DataFrame:
+def transform_df(df: pd.DataFrame, *args, **kwargs) -> pd.DataFrame:
     """
     Template code for a transformer block.
 

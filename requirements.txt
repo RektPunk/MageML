@@ -1,0 +1,2 @@
+mage_ai==0.8.41
+pre_commit==3.2.2

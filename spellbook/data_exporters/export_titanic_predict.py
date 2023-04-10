@@ -6,11 +6,11 @@ if "data_exporter" not in globals():
 
 
 @data_exporter
-def export_data_to_file(df: DataFrame, **kwargs) -> None:
+def export_data_to_file(df: DataFrame) -> None:
     """
     Template for exporting data to filesystem.
 
     Docs: https://docs.mage.ai/design/data-loading#example-loading-data-from-a-file
     """
-    filepath = "titanic_clean.csv"
+    filepath = "titanic_predict.csv"
     FileIO().export(df, filepath)

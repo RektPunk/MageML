@@ -1,5 +1,6 @@
 import pandas as pd
 import math
+from spellbook.utils.variables import COLS
 
 if "transformer" not in globals():
     from mage_ai.data_preparation.decorators import transformer
@@ -7,18 +8,8 @@ if "test" not in globals():
     from mage_ai.data_preparation.decorators import test
 
 
-X_COLS = [
-    "Age",
-    "Fare",
-    "Parch",
-    "Pclass",
-    "SibSp",
-    "Survived",
-]
-
-
 def select_number_columns(df: pd.DataFrame) -> pd.DataFrame:
-    return df[X_COLS]
+    return df[COLS]
 
 
 def fill_missing_values_with_median(df: pd.DataFrame) -> pd.DataFrame:

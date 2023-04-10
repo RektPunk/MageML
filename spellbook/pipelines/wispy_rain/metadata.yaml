@@ -10,11 +10,11 @@ blocks:
   has_callback: false
   language: python
   name: load_titanic
-  status: not_executed
+  status: executed
   type: data_loader
   upstream_blocks: []
   uuid: load_titanic
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
   configuration:
     file_path: null
@@ -25,14 +25,15 @@ blocks:
   has_callback: false
   language: python
   name: fill_in_missing_values
-  status: not_executed
+  status: executed
   type: transformer
   upstream_blocks:
   - load_titanic
   uuid: fill_in_missing_values
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: teal
   configuration:
+    dynamic: false
     file_path: null
   downstream_blocks:
   - export_titanic_predict
@@ -64,8 +65,8 @@ blocks:
 data_integration: null
 description: null
 extensions: {}
-name: titanic
+name: wispy rain
 type: python
-updated_at: '2023-04-10 14:42:20'
-uuid: titanic
+updated_at: '2023-04-10 15:36:52'
+uuid: wispy_rain
 widgets: []

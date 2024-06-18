@@ -1,6 +1,6 @@
 import pandas as pd
 import math
-from spellbook.utils.variables import COLS
+from titanic.utils.variables import COLS
 
 if "transformer" not in globals():
     from mage_ai.data_preparation.decorators import transformer

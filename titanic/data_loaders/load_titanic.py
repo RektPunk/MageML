@@ -2,7 +2,7 @@ import io
 import pandas as pd
 import requests
 from pandas import DataFrame
-from spellbook.utils.variables import TITANIC_DATA_URL
+from titanic.utils.variables import TITANIC_DATA_URL
 
 
 if "data_loader" not in globals():

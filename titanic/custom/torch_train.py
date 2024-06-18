@@ -2,7 +2,7 @@ import pandas as pd
 import torch
 from torch import nn
 from torch.utils.data import DataLoader
-from spellbook.utils.variables import (
+from titanic.utils.variables import (
     X_COLS,
     Y_COLS,
     BATCH_SIZE,

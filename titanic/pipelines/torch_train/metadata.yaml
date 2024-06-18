@@ -10,7 +10,9 @@ blocks:
   has_callback: false
   language: python
   name: load_titanic
+  retry_config: null
   status: executed
+  timeout: null
   type: data_loader
   upstream_blocks: []
   uuid: load_titanic
@@ -25,7 +27,9 @@ blocks:
   has_callback: false
   language: python
   name: fill_in_missing_values
+  retry_config: null
   status: executed
+  timeout: null
   type: transformer
   upstream_blocks:
   - load_titanic
@@ -42,12 +46,14 @@ blocks:
   has_callback: false
   language: python
   name: torch_train
-  status: not_executed
+  retry_config: null
+  status: executed
+  timeout: null
   type: custom
   upstream_blocks:
   - fill_in_missing_values
   uuid: torch_train
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
   configuration:
     file_path: null
@@ -57,16 +63,34 @@ blocks:
   has_callback: false
   language: python
   name: export_titanic_predict
-  status: not_executed
+  retry_config: null
+  status: executed
+  timeout: null
   type: data_exporter
   upstream_blocks:
   - torch_train
   uuid: export_titanic_predict
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: null
 data_integration: null
 description: null
+executor_config: {}
+executor_count: 1
+executor_type: null
 extensions: {}
 name: wispy rain
+notification_config: {}
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+tags: []
 type: python
-updated_at: '2023-04-10 15:36:52'
-uuid: wispy_rain
+uuid: torch_train
+variables_dir: /Users/rektpunk/.mage_data/titanic
 widgets: []

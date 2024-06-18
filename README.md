@@ -2,5 +2,5 @@
 
 ```
 pip install -r requirements.txt
-mage start spellbook
+mage start titanic
 ```

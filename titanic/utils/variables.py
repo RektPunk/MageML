@@ -12,6 +12,3 @@ Y_COLS = [
     "Survived",
 ]
 COLS = X_COLS + Y_COLS
-BATCH_SIZE = 64
-LEARNING_RATE = 1e-3
-EPOCHS = 100

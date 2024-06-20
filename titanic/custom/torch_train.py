@@ -2,19 +2,18 @@ import pandas as pd
 import torch
 from torch import nn
 from torch.utils.data import DataLoader
-from titanic.utils.variables import (
-    X_COLS,
-    Y_COLS,
-    BATCH_SIZE,
-    LEARNING_RATE,
-    EPOCHS,
-)
+from titanic.utils.variables import X_COLS, Y_COLS
 
 
 if "custom" not in globals():
     from mage_ai.data_preparation.decorators import custom
 if "test" not in globals():
     from mage_ai.data_preparation.decorators import test
+
+
+BATCH_SIZE = 64
+LEARNING_RATE = 1e-3
+EPOCHS = 100
 
 
 class NeuralNetwork(nn.Module):

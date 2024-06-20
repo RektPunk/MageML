@@ -3,7 +3,14 @@ import pandas as pd
 
 
 def select_columns(df: pd.DataFrame) -> pd.DataFrame:
-    # 모델에 사용할 컬럼, 컬럼의 rename rule을 미리 할당함
+    """
+    모델에 사용할 컬럼, 컬럼의 rename rule을 미리 할당함
+    Args:
+        df (pd.DataFrame)
+
+    Returns:
+        pd.DataFrame
+    """
     cols_dict: Dict[str, str] = {
         "ID": "ID",
         "target": "target",

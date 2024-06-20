@@ -10,9 +10,6 @@ if "test" not in globals():
 
 @data_loader
 def load_sample_submission(**kwargs) -> pd.DataFrame:
-    """
-    Template for loading data from API
-    """
     # 파일 호출
 
     submission_df: pd.DataFrame = pd.read_csv(
@@ -23,7 +20,4 @@ def load_sample_submission(**kwargs) -> pd.DataFrame:
 
 @test
 def test_output(*df) -> None:
-    """
-    Template code for testing the output of the block.
-    """
     assert df is not None, "The output is undefined"

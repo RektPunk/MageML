@@ -6,15 +6,16 @@ def shift_feature(
     df: pd.DataFrame,
     conti_cols: List[str],
     intervals: List[int],
-) -> List[pd.Series]:
+) -> pd.DataFrame:
     """
     연속형 변수의 shift feature 생성
     Args:
         df (pd.DataFrame)
         conti_cols (List[str]): continuous colnames
         intervals (List[int]): shifted intervals
-    Return:
-        List[pd.Series]
+
+    Returns:
+        pd.DataFrame
     """
     df_shift_dict = [
         df[conti_col].shift(interval).rename(f"{conti_col}_{interval}")

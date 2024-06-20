@@ -11,9 +11,15 @@ if "custom" not in globals():
 
 
 @custom
-def lgb_verify_score(*args, **kwargs):
-    # train_test_split 으로 valid set, train set 분리
+def lgb_experiment(*args, **kwargs) -> Dict[str, Union[str, int, float]]:
+    """
+    모델을 실험하고 기록한다.
+    Returns:
+        Dict[str, Union[str, int, float]]: params
+    """
     train_df = args[0].get("train_df")
+    assert train_df is not None, "args does not have key named 'train_df'"
+
     x_train, x_valid, y_train, y_valid = train_test_split(
         train_df.drop(["target", "ID"], axis=1),
         train_df["target"].astype(int),
@@ -37,6 +43,7 @@ def lgb_verify_score(*args, **kwargs):
         "random_state": 42,
         "verbose": 0,
     }  # TODO: hyperparameter tuning, logging logic
+
     lgb_model = lgb.train(
         params=params,
         train_set=train_data,

@@ -1,13 +1,9 @@
 import os
-import io
 from typing import List, Dict
 from tqdm import tqdm
-import numpy as np
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score, roc_auc_score
-import lightgbm as lgb
 
+from bitcoin.utils.variable import data_path
 
 if "data_loader" not in globals():
     from mage_ai.data_preparation.decorators import data_loader
@@ -16,21 +12,14 @@ if "test" not in globals():
 
 
 @data_loader
-def load_data_from_api(**kwargs) -> pd.DataFrame:
-    """
-    Template for loading data from API
-    """
+def load_raw_data(**kwargs) -> pd.DataFrame:
     # 파일 호출
-    data_path: str = os.path.join("bitcoin", "data")
     train_df: pd.DataFrame = pd.read_csv(os.path.join(data_path, "train.csv")).assign(
         _type="train"
     )  # train 에는 _type = train
     test_df: pd.DataFrame = pd.read_csv(os.path.join(data_path, "test.csv")).assign(
         _type="test"
     )  # test 에는 _type = test
-    submission_df: pd.DataFrame = pd.read_csv(
-        os.path.join(data_path, "test.csv")
-    )  # ID, target 열만 가진 데이터 미리 호출
     df: pd.DataFrame = pd.concat([train_df, test_df], axis=0)
 
     # HOURLY_ 로 시작하는 .csv 파일 이름을 file_names 에 할딩
@@ -60,7 +49,4 @@ def load_data_from_api(**kwargs) -> pd.DataFrame:
 
 @test
 def test_output(*df) -> None:
-    """
-    Template code for testing the output of the block.
-    """
     assert df is not None, "The output is undefined"

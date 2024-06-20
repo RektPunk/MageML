@@ -1,9 +1,9 @@
 from typing import List, Dict
 import pandas as pd
 
-from bitcoin.transformers.select_features import select_columns
-from bitcoin.transformers.assign_features import assign_feature
-from bitcoin.transformers.shift_features import shift_feature
+from bitcoin.utils.select_feature import select_columns
+from bitcoin.utils.assign_feature import assign_feature
+from bitcoin.utils.shift_feature import shift_feature
 
 
 if "transformer" not in globals():
@@ -13,7 +13,7 @@ if "test" not in globals():
 
 
 @transformer
-def transform_df(df: pd.DataFrame) -> Dict[str, pd.DataFrame]:
+def transform_data(df: pd.DataFrame) -> Dict[str, pd.DataFrame]:
     # select and assign
     df = select_columns(df)
     df = assign_feature(df)
@@ -48,7 +48,4 @@ def transform_df(df: pd.DataFrame) -> Dict[str, pd.DataFrame]:
 
 @test
 def test_output(df) -> None:
-    """
-    Template code for testing the output of the block.
-    """
     assert df is not None, "The output is undefined"

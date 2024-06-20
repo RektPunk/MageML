@@ -6,6 +6,6 @@ if "data_exporter" not in globals():
 
 
 @data_exporter
-def export_data_to_file(df: pd.DataFrame) -> None:
+def export_submission(df: pd.DataFrame) -> None:
     filepath = "output.csv"
     FileIO().export(df, filepath)

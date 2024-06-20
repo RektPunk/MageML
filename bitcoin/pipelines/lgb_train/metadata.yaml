@@ -3,43 +3,43 @@ blocks:
   color: null
   configuration:
     file_source:
-      path: data_loaders/load_submission.py
+      path: data_loaders/load_raw_data.py
+  downstream_blocks:
+  - transform_data
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: load_raw_data
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: load_raw_data
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_source:
+      path: data_loaders/load_sample_submission.py
   downstream_blocks:
   - lgb_train
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
-  name: load_submission
+  name: load_sample_submission
   retry_config: null
   status: executed
   timeout: null
   type: data_loader
   upstream_blocks: []
-  uuid: load_submission
+  uuid: load_sample_submission
 - all_upstream_blocks_executed: true
   color: null
   configuration:
     file_source:
-      path: data_loaders/load_data.py
-  downstream_blocks:
-  - transformer
-  executor_config: null
-  executor_type: local_python
-  has_callback: false
-  language: python
-  name: load_data
-  retry_config: null
-  status: executed
-  timeout: null
-  type: data_loader
-  upstream_blocks: []
-  uuid: load_data
-- all_upstream_blocks_executed: true
-  color: null
-  configuration:
-    file_source:
-      path: transformers/transformer.py
+      path: transformers/transform_data.py
   downstream_blocks:
   - lgb_experiment
   - lgb_train
@@ -47,14 +47,14 @@ blocks:
   executor_type: local_python
   has_callback: false
   language: python
-  name: transformer
+  name: transform_data
   retry_config: null
   status: executed
   timeout: null
   type: transformer
   upstream_blocks:
-  - load_data
-  uuid: transformer
+  - load_raw_data
+  uuid: transform_data
 - all_upstream_blocks_executed: true
   color: teal
   configuration:
@@ -72,7 +72,7 @@ blocks:
   timeout: null
   type: custom
   upstream_blocks:
-  - transformer
+  - transform_data
   uuid: lgb_experiment
 - all_upstream_blocks_executed: true
   color: teal
@@ -91,8 +91,8 @@ blocks:
   timeout: null
   type: custom
   upstream_blocks:
-  - load_submission
-  - transformer
+  - load_sample_submission
+  - transform_data
   - lgb_experiment
   uuid: lgb_train
 - all_upstream_blocks_executed: true

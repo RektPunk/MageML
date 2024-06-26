@@ -1,2 +1,2 @@
-mage_ai==0.9.71
+mage_ai==0.9.72pip
 pre_commit==3.7.1

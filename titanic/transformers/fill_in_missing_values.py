@@ -8,6 +8,16 @@ if "test" not in globals():
     from mage_ai.data_preparation.decorators import test
 
 
+COLS = [
+    "Age",
+    "Fare",
+    "Parch",
+    "Pclass",
+    "SibSp",
+    "Survived",
+]
+
+
 def select_number_columns(df: pd.DataFrame) -> pd.DataFrame:
     return df[COLS]
 

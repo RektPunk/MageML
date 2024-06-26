@@ -2,7 +2,6 @@ import pandas as pd
 import torch
 from torch import nn
 from torch.utils.data import DataLoader
-from titanic.utils.variables import X_COLS, Y_COLS
 
 
 if "custom" not in globals():
@@ -10,7 +9,16 @@ if "custom" not in globals():
 if "test" not in globals():
     from mage_ai.data_preparation.decorators import test
 
-
+X_COLS = [
+    "Age",
+    "Fare",
+    "Parch",
+    "Pclass",
+    "SibSp",
+]
+Y_COLS = [
+    "Survived",
+]
 BATCH_SIZE = 64
 LEARNING_RATE = 1e-3
 EPOCHS = 100
